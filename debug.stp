@@ -6,6 +6,8 @@
 
   Un ejemplo de uso:
 	$ sudo stap -v debug.stp 'process("/bin/ls").function("*")' \ 'process("/bin/ls").function("main")' -c "/bin/ls > /dev/null"
+  Para el modulo (cargado):
+        $ sudo stap -v debug.stp 'module("mi_plugin").function("*")'
 */
 
 probe begin {
@@ -33,4 +35,3 @@ probe $2.return {
 
 probe $1.call   { trace(1, $$parms) }
 probe $1.return { trace(-1, $$return) }
-
