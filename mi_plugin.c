@@ -336,6 +336,6 @@ static int __init init_mi(void){
 }
 
 static void exit_mi(void){
-      printk(KERN_INFO "Module %s discaharged \n", MODULE_NAME);
+      printk(KERN_INFO "Module %s discharged \n", MODULE_NAME);
 }
 
