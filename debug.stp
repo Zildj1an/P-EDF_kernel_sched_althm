@@ -1,13 +1,13 @@
 /*
-  Printea info de llamdas y returns per-thread cronometrada.
+  Printea info de llamadas y returns per-thread cronometradas.
   Hace tracing del primer parametro. Mientras el primero parametro triggea la funcion trace,
   esta solo hara print en caso de que nos encontremos en un thread nested dentro de la invocacion del segundo parametro,
   o de que no haya segundo parametro (es opcional)
 
   Un ejemplo de uso:
 	$ sudo stap -v debug.stp 'process("/bin/ls").function("*")' \ 'process("/bin/ls").function("main")' -c "/bin/ls > /dev/null"
-  Para el modulo (cargado):
-        $ sudo stap -v debug.stp 'module("mi_plugin").function("*")'
+  Para el modulo:
+        $ sudo stap -r $(uname -r) -v debug.stp 'module("mi_plugin").function("*")'
 */
 
 probe begin {
@@ -16,7 +16,7 @@ probe begin {
 
 function trace(entry_p, extra) {
   %( $# > 1 %? if (tid() in trace) %)
-  printf("%s%s cpu = %s%s %s\n", thread_indent (entry_p),(entry_p > 0? "->" : "<-"), cpu(),ppfunc(),extra)
+  printf("%s%s cpu = %d%s %s\n", thread_indent (entry_p),(entry_p > 0? "->" : "<-"), cpu(),ppfunc(),extra)
 }
 
 %( $# > 1 %?
