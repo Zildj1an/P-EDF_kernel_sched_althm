@@ -330,12 +330,24 @@ static struct sched_plugin mi_plugin = {
 /* Initialize the plugin */
 static int __init init_mi(void){
 
+      int err;
+
       printk(KERN_INFO "Module %s charged \n", MODULE_NAME);
-      /* Add the sched plugin to the list of available pugins */
-      return register_sched_plugin(&mi_plugin);
+
+     /* Add the sched plugin to the list of available pugins */
+      err =  register_sched_plugin(&mi_plugin, module_refcount(THIS_MODULE));
+      try_module_get(THIS_MODULE);
+
+    return 0;
 }
 
 static void exit_mi(void){
+
+    module_put(THIS_MODULE);
+
+    if(unregister_sched_plugin(&mi_plugin, module_refcount(THIS_MODULE)))
       printk(KERN_INFO "Module %s discharged \n", MODULE_NAME);
 }
+
+
 
