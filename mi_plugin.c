@@ -1,4 +1,4 @@
-#include "mi_plugin.h"
+#include "mi_plugin.h" /* All the functions are in this header explained in detail */
 
 static void mi_job_completion(struct task_struct *prev, int budget_exhausted){
 
@@ -10,7 +10,7 @@ static void mi_job_completion(struct task_struct *prev, int budget_exhausted){
 
 static void mi_requeue(struct task_struct *tsk, struct mi_cpu_state *cpu_state){
 
-      /* is_released está en include/litmus/litmus.h
+      /* is_released esta en include/litmus/litmus.h
          Solo coge la hora de release del task y comprueba restando que es antes de ahora
          (por tanto puede ir a la ready queue)
       */
@@ -333,17 +333,14 @@ static int __init init_mi(void){
       int err;
 
      /* Add the sched plugin to the list of available pugins */
-      if(err = register_sched_plugin(&mi_plugin))
+      if((err = register_sched_plugin(&mi_plugin)))
             printk(KERN_INFO "Module %s charged \n", MODULE_NAME);
-    
+
     return err;
 }
 
 static void exit_mi(void){
 
-    if(unregister_sched_plugin(&mi_plugin, module_refcount(THIS_MODULE)))
+    if(unregister_sched_plugin(&mi_plugin))
       printk(KERN_INFO "Module %s discharged \n", MODULE_NAME);
 }
-
-
-
