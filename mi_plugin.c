@@ -283,7 +283,8 @@ static void mi_setup_domain_proc(void){
 
 static long mi_deactivate_plugin(void){
       destroy_domain_proc_info(&mi_domain_proc_info);
-  return 0;
+      module_put(THIS_MODULE);
+    return 0;
 }
 
 static long mi_activate_plugin(void){
@@ -308,7 +309,8 @@ static long mi_activate_plugin(void){
       }
 
       mi_setup_domain_proc();
-
+      try_module_get(THIS_MODULE);
+    
     return 0;
 }
 
