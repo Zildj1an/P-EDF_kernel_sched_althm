@@ -1,0 +1,39 @@
+#################################################
+# sudo rtspin -v 2.5 20 0.1 &> rtspin_gsnedf    #
+#################################################
+
+rtspin/8026:1 @ 0.0112ms
+	release:  48694406448960ns (=48694.41s)
+	deadline: 48694426448960ns (=48694.43s)
+	cur time: 48694406480302ns (=48694.41s)
+	time until deadline: 19.97ms
+	target exec. time:   2.38ms (95.00% of WCET)
+	sleep_next_period() until 48694426448960ns (=48694.43s)
+rtspin/8026:2 @ 20.1042ms
+	release:  48694426448960ns (=48694.43s)
+	deadline: 48694446448960ns (=48694.45s)
+	cur time: 48694426577891ns (=48694.43s)
+	time until deadline: 19.87ms
+	target exec. time:   2.38ms (95.00% of WCET)
+	sleep_next_period() until 48694446448960ns (=48694.45s)
+rtspin/8026:3 @ 40.0832ms
+	release:  48694446448960ns (=48694.45s)
+	deadline: 48694466448960ns (=48694.47s)
+	cur time: 48694446540938ns (=48694.45s)
+	time until deadline: 19.91ms
+	target exec. time:   2.38ms (95.00% of WCET)
+	sleep_next_period() until 48694466448960ns (=48694.47s)
+rtspin/8026:4 @ 60.1060ms
+	release:  48694466448960ns (=48694.47s)
+	deadline: 48694486448960ns (=48694.49s)
+	cur time: 48694466579747ns (=48694.47s)
+	time until deadline: 19.87ms
+	target exec. time:   2.38ms (95.00% of WCET)
+	sleep_next_period() until 48694486448960ns (=48694.49s)
+rtspin/8026:5 @ 80.0872ms
+	release:  48694486448960ns (=48694.49s)
+	deadline: 48694506448960ns (=48694.51s)
+	cur time: 48694486544989ns (=48694.49s)
+	time until deadline: 19.90ms
+	target exec. time:   2.38ms (95.00% of WCET)
+	sleep_next_period() until 48694506448960ns (=48694.51s)

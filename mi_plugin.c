@@ -282,9 +282,11 @@ static void mi_setup_domain_proc(void){
 }
 
 static long mi_deactivate_plugin(void){
+
       destroy_domain_proc_info(&mi_domain_proc_info);
       module_put(THIS_MODULE);
-    return 0;
+ 
+   return 0;
 }
 
 static long mi_activate_plugin(void){
@@ -301,7 +303,6 @@ static long mi_activate_plugin(void){
           printk("%s -> Initializing CPU %d...\n", MODULE_NAME, cpu);
 
           state = cpu_state_for(cpu);
-
           state->cpu = cpu;
           state->scheduled = NULL;
           /* If the alth is not preemptive then second arg should be NULL */
@@ -310,7 +311,7 @@ static long mi_activate_plugin(void){
 
       mi_setup_domain_proc();
       try_module_get(THIS_MODULE);
-    
+
     return 0;
 }
 
@@ -335,7 +336,7 @@ static int __init init_mi(void){
       int err;
 
      /* Add the sched plugin to the list of available pugins */
-      if((err = register_sched_plugin(&mi_plugin)))
+      if ((err = register_sched_plugin(&mi_plugin)))
             printk(KERN_INFO "Module %s charged \n", MODULE_NAME);
 
     return err;
@@ -343,6 +344,6 @@ static int __init init_mi(void){
 
 static void exit_mi(void){
 
-    if(unregister_sched_plugin(&mi_plugin))
+    if (unregister_sched_plugin(&mi_plugin))
       printk(KERN_INFO "Module %s discharged \n", MODULE_NAME);
 }

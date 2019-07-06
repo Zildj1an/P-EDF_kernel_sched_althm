@@ -1,0 +1,1 @@
+cmd_/homelocal/bench/Carlos/plugin/mi_plugin.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /homelocal/bench/Carlos/plugin/mi_plugin.ko /homelocal/bench/Carlos/plugin/mi_plugin.o /homelocal/bench/Carlos/plugin/mi_plugin.mod.o ;  true
