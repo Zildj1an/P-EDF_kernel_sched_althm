@@ -239,14 +239,17 @@ static long mi_admit_task(struct task_struct *tsk) {
          get_partition(task) is LITMUS's notion of where the task is logically assigned to.
          Since P-EDF is a particioned scheduler,we require that R-T tasks have migrated to the appropriated
           core before they become real-time tasks.
-      */
+
       if(task_cpu(tsk) == get_partition(tsk)){
           printk(KERN_INFO "%s -> Accepted by mi_plugin. \n", MODULE_NAME);
           return 0;
       }
+	  else {
+		  printk(KERN_ALERT "%s -> Plugin rejected. \n", MODULE_NAME);
+	          return -EINVAL;
+	} */
 
-      /* Reject the task. */
-      return -EINVAL;
+       return 0;
 }
 
 static long mi_get_domain_proc_info(struct domain_proc_info **ret){

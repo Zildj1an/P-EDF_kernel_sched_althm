@@ -1,0 +1,4 @@
+could not become RT task: Invalid argument
+(Debug) El old_mode es BACKGROUND_TASK y el modo actual es LITMUS_RT_TASK
+        Se llama a sched_setcheduler con me = 4183, policy = 7
+(DEBUG) La llamada task_mode con LITMUS_RT_TASK 1 devuelve -1
